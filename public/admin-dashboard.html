@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Brightside Dental</title>
+  <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div>
+      <h1>Brightside Dental</h1>
+      <p>Appointment Management</p>
+    </div>
+    <button id="logoutButton">Logout</button>
+  </header>
+
+  <main class="dashboard">
+    <section class="welcome">
+      <h2>Appointments</h2>
+      <p>Manage your clinic appointment requests.</p>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span>Total Appointments</span>
+        <strong id="totalCount">0</strong>
+      </article>
+
+      <article class="stat-card">
+        <span>Requested</span>
+        <strong id="requestedCount">0</strong>
+      </article>
+
+      <article class="stat-card">
+        <span>Confirmed</span>
+        <strong id="confirmedCount">0</strong>
+      </article>
+
+
+
+<article class="stat-card">
+  <span>Completed</span>
+  <strong id="completedCount">0</strong>
+</article>
+
+<article class="stat-card">
+  <span>Cancelled</span>
+  <strong id="cancelledCount">0</strong>
+</article>
+</section>
+
+    <section class="appointments-section">
+      <div class="section-heading">
+  <h2>All Appointments</h2>
+
+  <div class="dashboard-actions">
+    <button id="exportButton" type="button">Export CSV</button>
+    <button id="refreshButton" type="button">Refresh</button>
+  </div>
+</div>
+
+      <!-- Appointment Search -->
+      <div class="search-container">
+        <input
+          type="search"
+          id="appointmentSearch"
+          placeholder="Search by patient name, email or phone..."
+          aria-label="Search appointments"
+        >
+      </div>
+      <div class="filter-container">
+  <label for="statusFilter">Filter by status:</label>
+
+  <select id="statusFilter">
+    <option value="all">All Appointments</option>
+    <option value="requested">Requested</option>
+    <option value="confirmed">Confirmed</option>
+    <option value="completed">Completed</option>
+    <option value="cancelled">Cancelled</option>
+  </select>
+
+  <label for="startDateFilter">From:</label>
+  <input type="date" id="startDateFilter">
+
+  <label for="endDateFilter">To:</label>
+  <input type="date" id="endDateFilter">
+
+  <button type="button" id="clearDateFilter">Clear Dates</button>
+</div>
+      <p id="statusMessage" role="status" aria-live="polite">
+  Loading appointments...
+</p>
+
+<div id="toastContainer" aria-live="polite"></div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Patient</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Date</th>
+              <th>Service</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="appointmentsTable">
+          </tbody>
+        </table>
+      </div>
+      <!-- PAGINATION CONTROLS -->
+<div class="pagination-container">
+
+  <div class="pagination-info">
+    <span id="paginationInfo">Showing 0–0 of 0</span>
+  </div>
+
+  <div class="pagination-controls">
+
+    <label for="pageSize">Show:</label>
+
+    <select id="pageSize">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+
+    <button type="button" id="prevPage" disabled>
+      Previous
+    </button>
+
+    <span id="currentPage">Page 1 of 1</span>
+
+    <button type="button" id="nextPage" disabled>
+      Next
+    </button>
+
+  </div>
+
+</div>
+    </section>
+  </main>
+
+  <dialog id="appointmentDialog">
+  <h2>Appointment Details</h2>
+
+  <p><strong>Patient:</strong> <span id="viewName"></span></p>
+  <p><strong>Email:</strong> <span id="viewEmail"></span></p>
+  <p><strong>Phone:</strong> <span id="viewPhone"></span></p>
+  <p><strong>Date:</strong> <span id="viewDate"></span></p>
+  <p><strong>Service:</strong> <span id="viewService"></span></p>
+  <p><strong>Status:</strong> <span id="viewStatus"></span></p>
+  <p><strong>Notes:</strong> <span id="viewNotes"></span></p>
+  <p><strong>Booking Date:</strong> <span id="viewCreated"></span></p>
+
+  <button type="button" id="closeDialog">Close</button>
+</dialog>
+
+<script src="admin-dashboard.js"></script>
+</body>
+</html>

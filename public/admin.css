@@ -1,0 +1,113 @@
+
+/* Brightside Dental - Admin Login */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f2f5f3;
+  color: #1f3d3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 430px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 45px 35px;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(31, 61, 59, 0.10);
+  border: 1px solid #e4ebe7;
+}
+
+.login-card h1 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #1f3d3b;
+}
+
+.login-card > p {
+  text-align: center;
+  color: #7b8984;
+  font-size: 14px;
+  margin-bottom: 35px;
+}
+
+.login-card label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #354d47;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #d8e1dc;
+  border-radius: 9px;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 22px;
+  background: #fbfcfb;
+}
+
+.login-card input:focus {
+  border-color: #1f3d3b;
+  box-shadow: 0 0 0 3px rgba(31, 61, 59, 0.08);
+}
+
+.login-card button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 9px;
+  background: #1f3d3b;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login-card button:hover {
+  background: #315b54;
+}
+
+.login-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#message {
+  margin-top: 18px;
+  margin-bottom: 0;
+  font-size: 14px;
+  text-align: center;
+  color: #b34236;
+  min-height: 18px;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 35px 24px;
+  }
+
+  .login-card h1 {
+    font-size: 26px;
+  }
+}

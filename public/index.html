@@ -3,28 +3,54 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GUNDRE CLINIC — Care that puts you at ease</title>
-<meta name="description" content="GUNDRE CLINIC is a family dental clinic focused on gentle, unhurried care. Book your visit online." />
+<title>Your Dental Clinic | Dental Website Template</title>
+<meta name="description" content="A modern dental clinic website template focused on comfortable, patient-friendly care." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
-<script src="script.js"></script>
+
 </head>
 <body>
 
+
+
 <header class="site-header">
   <div class="wrap header-inner">
-    <a href="#top" class="wordmark">GUNDRE CLINIC</a>
-    <nav class="main-nav">
+    <a href="#top" class="wordmark">YOUR DENTAL CLINIC</a>
+
+    <button
+      class="mobile-menu-toggle"
+      id="mobile-menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="main-navigation"
+      aria-expanded="false"
+    >
+      <span class="menu-icon" aria-hidden="true">☰</span>
+    </button>
+
+    <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
       <a href="#services">Services</a>
       <a href="#team">Team</a>
       <a href="#stories">Stories</a>
       <a href="#visit">Visit us</a>
+      <a href="#booking" class="mobile-booking-link">Book a visit</a>
     </nav>
+
     <a href="#booking" class="btn btn-primary nav-cta">Book a visit</a>
+
+    <button
+      id="theme-toggle"
+      class="theme-toggle"
+      type="button"
+      aria-label="Toggle theme"
+    >
+      💡
+    </button>
   </div>
 </header>
+
 
 <main id="top">
 
@@ -33,10 +59,9 @@
       <div class="hero-copy">
         <h1>Dental care without the dread.</h1>
         <p class="hero-sub">
-          GUNDRE CLINIC is a family clinic in your neighborhood, built around
-          one idea: a checkup shouldn't be something you postpone.
-          Unhurried appointments, clear explanations, and a team that
-          remembers your name.
+          A customizable dental website template designed to help clinics
+          introduce their services, share useful information, and make it
+          easier for visitors to get in touch.
         </p>
         <div class="hero-actions">
           <a href="#booking" class="btn btn-primary">Book a visit</a>
@@ -44,47 +69,72 @@
         </div>
         <dl class="hero-facts">
           <div>
-            <dt>Same-week</dt>
-            <dd>appointments for new patients</dd>
+            <dt>Patient-first</dt>
+            <dd>care and clear communication</dd>
           </div>
           <div>
-            <dt>18 years</dt>
-            <dd>caring for local families</dd>
+            <dt>Your clinic</dt>
+            <dd>your experience and credentials</dd>
           </div>
         </dl>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="240" cy="240" r="210" fill="var(--sage-pale)" />
-          <path d="M120 260c30 70 90 110 120 110s90-40 120-110" 
-                fill="none" stroke="var(--teal-deep)" stroke-width="14" stroke-linecap="round"/>
-          <circle cx="150" cy="215" r="16" fill="var(--teal-deep)"/>
-          <circle cx="330" cy="215" r="16" fill="var(--teal-deep)"/>
-          <path d="M90 150c40-50 260-50 300 0" fill="none" stroke="var(--coral)" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
-        </svg>
-      </div>
-    </div>
+      <div class="hero-art">
+
+  <div class="doctor-circle">
+
+    <div class="leaf leaf-1"></div>
+    <div class="leaf leaf-2"></div>
+    <div class="leaf leaf-3"></div>
+    <div class="leaf leaf-4"></div>
+
+    <img
+      src="dr_img_demo.png"
+      alt="Illustrative dentist portrait for the dental clinic template"
+      class="doctor-photo"
+    >
+
+    <!-- DOCTOR AVAILABILITY -->
+<div class="doctor-status">
+  <span class="status-dot"></span>
+
+  <div>
+    <strong>Demo profile</strong>
+    <small>Customize this</small>
+  </div>
+</div>
+
+<div class="doctor-message">
+  <span>Your Health</span>
+  <span>Our Priority</span>
+  <i></i>
+</div>
+
+    <div class="coral-line"></div>
+
+  </div>
+
+</div>
   </section>
 
   <section class="about" id="about">
     <div class="wrap about-inner">
-      <p class="eyebrow-text">Why patients switch to us</p>
+      <p class="eyebrow-text">About the clinic</p>
       <h2>We slow down where it counts.</h2>
       <div class="about-grid">
         <div class="about-item">
-          <h3>Longer appointments</h3>
-          <p>Most clinics book you in 15-minute slots. We plan for 40, so
-          there's time for your questions before we ever pick up a tool.</p>
+          <h3>Time for your questions</h3>
+          <p>Describe how your clinic helps patients understand their options.
+          Replace this sample text with accurate information about your practice.</p>
         </div>
         <div class="about-item">
-          <h3>Plain-language plans</h3>
-          <p>Before any treatment, we walk through what it involves, what
-          it costs, and what happens if you wait — in writing, not jargon.</p>
+          <h3>Clear explanations</h3>
+          <p>Explain how your team discusses treatment choices, expected costs,
+          and next steps in language patients can understand.</p>
         </div>
         <div class="about-item">
-          <h3>Comfort options</h3>
-          <p>Noise-cancelling headphones, weighted blankets, and sedation
-          options for patients with dental anxiety or sensory needs.</p>
+          <h3>Comfort-focused care</h3>
+          <p>Highlight the comfort measures your clinic actually offers.
+          Only list services and options available at your practice.</p>
         </div>
       </div>
     </div>
@@ -101,13 +151,13 @@
       </p>
       <div class="gallery-grid">
         <div class="gallery-frame">
-          <img src="clinic-photo-1.jpg" alt="GUNDRE CLINIC treatment room" />
+          <img src="clinic-photo-1.jpg" alt="Example dental treatment room" />
         </div>
         <div class="gallery-frame">
-          <img src="clinic-photo-2.webp" alt="GUNDRE CLINIC dentist with patient" />
+          <img src="clinic-photo-2.webp" alt="Example dentist consultation in a dental office" />
         </div>
         <div class="gallery-frame">
-          <img src="clinic-photo-3.jpg" alt="GUNDRE CLINIC procedure in progress" />
+          <img src="clinic-photo-3.jpg" alt="Example dental treatment room" />
         </div>
       </div>
     </div>
@@ -132,7 +182,7 @@
         <article class="service-card">
           <h3>Restorative work</h3>
           <p>Fillings, crowns, bridges, and root canals, done with
-          same-day materials when possible.</p>
+          based on each patient’s needs and the clinic’s available treatment options.</p>
         </article>
         <article class="service-card">
           <h3>Orthodontics</h3>
@@ -141,8 +191,8 @@
         </article>
         <article class="service-card">
           <h3>Emergency care</h3>
-          <p>Chipped a tooth or in sudden pain? We hold same-day slots
-          every weekday for exactly this.</p>
+          <p>Describe your emergency-care policy here. Add availability details only
+          if your clinic can reliably provide them.</p>
         </article>
       </div>
     </div>
@@ -151,24 +201,17 @@
   <section class="team" id="team">
     <div class="wrap">
       <p class="eyebrow-text">Your care team</p>
-      <h2>Three dentists, one shared approach.</h2>
-      <div class="team-grid">
+      <h2>Meet your dental team.</h2>
+      <div class="team-grid team-grid-2">
         <div class="team-card">
-          <div class="team-avatar" style="background:var(--teal-deep)"></div>
-          <h3>Dr. Amara Osei, DDS</h3>
-          <p>General &amp; restorative dentistry. Clinic founder,
-          practicing since 2008.</p>
+          <div class="team-avatar" style="background:var(--teal-deep)">DN</div>
+          <h3>Dr. Your Name</h3>
+          <p>Add verified qualification or specialty.</p>
         </div>
         <div class="team-card">
-          <div class="team-avatar" style="background:var(--coral)"></div>
-          <h3>Dr. Priya Nair, DMD</h3>
-          <p>Pediatric dentistry and orthodontics. Fluent in Hindi
-          and Tamil.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:var(--sage)"></div>
-          <h3>Dr. Marcus Webb, DDS</h3>
-          <p>Cosmetic dentistry and dental anxiety care.</p>
+          <div class="team-avatar" style="background:var(--coral)">DC</div>
+          <h3>Dr. Your Colleague</h3>
+          <p>Add verified qualification or specialty.</p>
         </div>
       </div>
     </div>
@@ -176,23 +219,23 @@
 
   <section class="stories" id="stories">
     <div class="wrap">
-      <p class="eyebrow-text">From patients</p>
+      <p class="eyebrow-text">Sample testimonials — replace before publishing</p>
       <h2>What it's actually like to visit.</h2>
       <div class="stories-grid">
         <blockquote>
-          <p>I hadn't seen a dentist in six years out of pure anxiety.
-          Dr. Webb talked me through every step before doing it.</p>
-          <cite>— Renata J.</cite>
+          <p>I hadn't seen a dentist in 3 years out of pure anxiety.
+          The dentist talked me through every step before treatment.</p>
+          <cite>— Sample patient</cite>
         </blockquote>
         <blockquote>
           <p>My kids actually ask when their next cleaning is. That's
           not something I ever expected to say.</p>
-          <cite>— Danielle K.</cite>
+          <cite>— Sample parent</cite>
         </blockquote>
         <blockquote>
           <p>Got a same-day slot for a cracked tooth on a Friday
           afternoon. Didn't expect that from a family clinic.</p>
-          <cite>— Tom H.</cite>
+          <cite>— Sample patient</cite>
         </blockquote>
       </div>
     </div>
@@ -203,11 +246,10 @@
       <div class="booking-copy">
         <p class="eyebrow-text">Book a visit</p>
         <h2>Tell us a bit about what you need.</h2>
-        <p>We'll confirm your appointment by email within one business
-        day. For same-day dental emergencies, call the clinic directly
-        instead of booking online.</p>
+        <p>This is a demo form and does not send or save appointment requests.
+        Connect a booking service or backend before using it for a real clinic.</p>
       </div>
-      <form id="booking-form" class="booking-form" novalidate>
+      <form id="booking-form" class="booking-form">
         <div class="form-row">
           <label for="name">Full name</label>
           <input type="text" id="name" name="name" required />
@@ -255,22 +297,138 @@
     <div class="wrap visit-inner">
       <div>
         <p class="eyebrow-text">Visit us</p>
-        <h2>412 Maple Street, Suite 2</h2>
-        <p>Open Monday–Friday, 8am–6pm. Saturdays 9am–1pm.</p>
-        <p>Call: (555) 019-2842 &nbsp;·&nbsp; hello@brightsidedental.example</p>
+        <h2>Your Clinic Location</h2>
+        <p>Your Clinic Address, Your City, Your State</p>
+        <p>Hours: Add your clinic's confirmed opening hours.</p>
+        <p>Phone: Add clinic phone number · Email: Add clinic email</p>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <span>© 2026 Brightside Dental Clinic.</span>
-    <span>412 Maple Street, Suite 2</span>
+<!-- =========================
+     PREMIUM FOOTER
+========================= -->
+
+<footer class="premium-footer">
+
+  <div class="wrap">
+
+    <div class="footer-main">
+
+      <!-- BRAND -->
+      <div class="footer-brand">
+
+        <a href="#top" class="footer-logo-image">
+  <img src="fotter_dr_img.png" alt="Your Dental Clinic Logo">
+</a>
+
+        <p class="footer-tagline">
+          Care that puts you at ease.
+        </p>
+
+        <p class="footer-description">
+          Gentle, unhurried dental care focused on your
+          comfort, confidence, and long-term oral health.
+        </p>
+
+        <a href="#booking" class="footer-book-btn">
+          Book an Appointment
+          <span>↗</span>
+        </a>
+
+      </div>
+
+
+      <!-- QUICK LINKS -->
+      <div class="footer-column">
+
+        <h3>Explore</h3>
+
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#clinic-gallery">Gallery</a>
+        <a href="#team">Our Team</a>
+        <a href="#stories">Patient Stories</a>
+
+      </div>
+
+
+      <!-- SERVICES -->
+      <div class="footer-column">
+
+        <h3>Services</h3>
+
+        <a href="#services">General Dentistry</a>
+        <a href="#services">Smile Care</a>
+        <a href="#services">Dental Implants</a>
+        <a href="#services">Root Canal Treatment</a>
+        <a href="#services">Cosmetic Dentistry</a>
+
+      </div>
+
+
+      <!-- CONTACT -->
+      <div class="footer-column footer-contact">
+        <h3>Contact</h3>
+
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">⌖</span>
+          <p>Your Clinic Address<br>Your City, Your State</p>
+        </div>
+
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">☎</span>
+          <span>Add clinic phone number</span>
+        </div>
+
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">✉</span>
+          <span>Add clinic email</span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 YOUR DENTAL CLINIC. All rights reserved.
+      </p>
+
+      <div class="footer-socials">
+
+        <a href="#" aria-label="Instagram">
+          IG
+        </a>
+
+        <a href="#" aria-label="Facebook">
+          FB
+        </a>
+
+        <a href="#" aria-label="WhatsApp">
+          WA
+        </a>
+
+      </div>
+
+      <p class="footer-made">
+        Designed with care.
+      </p>
+
+    </div>
+
   </div>
+
 </footer>
 
-<script src="script.js"></script>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
