@@ -53,6 +53,11 @@ function writeAppointments(list) {
 const adminSessions = new Map();
 const SESSION_DURATION = 8 * 60 * 60 * 1000;
 
+// Admin login rate limiting
+const loginAttempts = new Map();
+const LOGIN_WINDOW = 15 * 60 * 1000;
+const MAX_LOGIN_ATTEMPTS = 5;
+
 function getAdminToken(req) {
   const cookies = req.headers.cookie || "";
   const match = cookies.match(/(?:^|;\s*)adminToken=([^;]*)/);
@@ -89,12 +94,13 @@ function requireAdmin(req, res) {
 }
 
 
+
 function validateAppointment(body) {
   const errors = [];
 
   const { name, email, phone, service, date, notes } = body;
 
-  // Full name
+  // Name
   if (
     typeof name !== "string" ||
     name.trim().length < 2 ||
@@ -172,62 +178,9 @@ function validateAppointment(body) {
     }
   }
 
-  
-
-  if (
-    typeof name !== "string" ||
-    name.trim().length < 2
-  ) {
-    errors.push("Please enter your full name.");
-  }
-
-  if (
-    typeof email !== "string" ||
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
-  ) {
-    errors.push("Please enter a valid email address.");
-  }
-
-  if (
-    phone === undefined ||
-    phone === null ||
-    String(phone).replace(/\D/g, "").length < 7
-  ) {
-    errors.push("Please enter a valid phone number.");
-  }
-
-  if (typeof service !== "string" || !service.trim()) {
-    errors.push("Please choose a service.");
-  }
-
-  if (
-  typeof date !== "string" ||
-  !/^\d{4}-\d{2}-\d{2}$/.test(date)
-) {
-  errors.push("Please choose a valid date.");
-} else {
-  const [year, month, day] = date.split("-").map(Number);
-  const selectedDate = new Date(year, month - 1, day);
-
-  // Reject impossible dates such as 2026-02-30
-  if (
-    selectedDate.getFullYear() !== year ||
-    selectedDate.getMonth() !== month - 1 ||
-    selectedDate.getDate() !== day
-  ) {
-    errors.push("Please choose a valid date.");
-  } else {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    if (selectedDate < today) {
-      errors.push("Please choose today or a future date.");
-    }
-  }
-}
-
   return errors;
 }
+
 
 function sendJSON(res, statusCode, data) {
   const body = JSON.stringify(data);
@@ -297,13 +250,42 @@ const server = http.createServer((req, res) => {
 
   const pathname = parsedUrl.pathname;
 
-  
+
+
   // ADMIN LOGIN
   if (pathname === "/api/admin/login" && req.method === "POST") {
+    const clientIP = req.socket.remoteAddress || "unknown";
+    const now = Date.now();
+
+    let attempts = loginAttempts.get(clientIP);
+
+    if (!attempts || now - attempts.windowStartedAt >= LOGIN_WINDOW) {
+      attempts = {
+        count: 0,
+        windowStartedAt: now
+      };
+
+      loginAttempts.set(clientIP, attempts);
+    }
+
+    if (attempts.count >= MAX_LOGIN_ATTEMPTS) {
+      const remainingTime = Math.ceil(
+        (LOGIN_WINDOW - (now - attempts.windowStartedAt)) / 1000
+      );
+
+      res.setHeader("Retry-After", remainingTime);
+
+      return sendJSON(res, 429, {
+        ok: false,
+        error: "Too many login attempts. Please try again later."
+      });
+    }
+
     let body = "";
 
     req.on("data", chunk => {
       body += chunk.toString();
+
       if (Buffer.byteLength(body) > 10000) {
         res.writeHead(413);
         res.end();
@@ -343,11 +325,29 @@ const server = http.createServer((req, res) => {
         crypto.timingSafeEqual(expectedBuffer, suppliedBuffer);
 
       if (!valid) {
+        attempts.count++;
+
+        if (attempts.count >= MAX_LOGIN_ATTEMPTS) {
+          const remainingTime = Math.ceil(
+            (LOGIN_WINDOW - (Date.now() - attempts.windowStartedAt)) / 1000
+          );
+
+          res.setHeader("Retry-After", remainingTime);
+
+          return sendJSON(res, 429, {
+            ok: false,
+            error: "Too many login attempts. Please try again later."
+          });
+        }
+
         return sendJSON(res, 401, {
           ok: false,
           error: "Incorrect password."
         });
       }
+
+      // Clear failed attempts after successful login.
+      loginAttempts.delete(clientIP);
 
       const token = crypto.randomBytes(32).toString("hex");
 
@@ -358,7 +358,8 @@ const server = http.createServer((req, res) => {
       const secureCookie =
         process.env.NODE_ENV === "production" ? "; Secure" : "";
 
-      res.setHeader("Set-Cookie",
+      res.setHeader(
+        "Set-Cookie",
         `adminToken=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800${secureCookie}`
       );
 
@@ -367,6 +368,8 @@ const server = http.createServer((req, res) => {
 
     return;
   }
+
+
 
   // ADMIN LOGOUT
   if (pathname === "/api/admin/logout" && req.method === "POST") {

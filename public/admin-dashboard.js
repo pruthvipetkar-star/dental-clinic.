@@ -376,9 +376,9 @@ async function updateAppointmentStatus(id, newStatus, select) {
     const data = await response.json();
 
     if (response.status === 401) {
-      window.location.href = "admin-login.html";
-      return;
-    }
+  window.location.href = "admin-dashboard.html";
+  return;
+}
 
     if (!response.ok) {
       throw new Error(data.error || "Could not update status.");

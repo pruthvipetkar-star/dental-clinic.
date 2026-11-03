@@ -190,3 +190,156 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setMenuOpen(false);
 });
+// Apply clinic configuration
+
+if (typeof CLINIC_CONFIG !== "undefined") {
+  // Clinic name
+  const clinicNameElement = document.getElementById("clinic-name");
+  const footerClinicName = document.getElementById("footer-clinic-name");
+
+  if (clinicNameElement) {
+    clinicNameElement.textContent = CLINIC_CONFIG.clinicName;
+  }
+
+  if (footerClinicName) {
+    footerClinicName.textContent = CLINIC_CONFIG.clinicName;
+  }
+
+  // Doctor information
+  const doctorNameElement = document.getElementById("doctor-name");
+  const doctorQualificationElement = document.getElementById("doctor-qualification");
+
+  if (doctorNameElement) {
+    doctorNameElement.textContent = CLINIC_CONFIG.doctorName;
+  }
+
+  if (doctorQualificationElement) {
+    doctorQualificationElement.textContent = CLINIC_CONFIG.doctorQualification;
+  }
+
+  // Clinic contact information
+  const locationHeadingElement = document.getElementById("clinic-location-heading");
+
+if (locationHeadingElement) {
+  locationHeadingElement.textContent = CLINIC_CONFIG.locationHeading;
+}
+  const addressElement = document.getElementById("clinic-address");
+  const hoursElement = document.getElementById("clinic-hours");
+  const phoneElement = document.getElementById("clinic-phone");
+  const emailElement = document.getElementById("clinic-email");
+
+  if (addressElement) {
+    addressElement.textContent =
+      `${CLINIC_CONFIG.address}, ${CLINIC_CONFIG.city}, ${CLINIC_CONFIG.state}`;
+  }
+
+  if (hoursElement) {
+    hoursElement.textContent = CLINIC_CONFIG.openingHours;
+  }
+
+  if (phoneElement) {
+    phoneElement.textContent = CLINIC_CONFIG.phone;
+  }
+
+  if (emailElement) {
+    emailElement.textContent = CLINIC_CONFIG.email;
+  }
+  // Footer contact information
+const footerAddress = document.getElementById("footer-address");
+const footerPhone = document.getElementById("footer-phone");
+const footerEmail = document.getElementById("footer-email");
+
+if (footerAddress) {
+  footerAddress.textContent =
+    `${CLINIC_CONFIG.address}, ${CLINIC_CONFIG.city}, ${CLINIC_CONFIG.state}`;
+}
+
+if (footerPhone) {
+  footerPhone.textContent = CLINIC_CONFIG.phone;
+}
+
+if (footerEmail) {
+  footerEmail.textContent = CLINIC_CONFIG.email;
+}
+
+  // Browser tab title
+
+  // ==========================================
+  // DYNAMIC SERVICES
+  // ==========================================
+
+  const servicesHeadingElement = document.querySelector(".services h2");
+  const servicesGrid = document.querySelector(".services-grid");
+
+  if (servicesHeadingElement) {
+    servicesHeadingElement.textContent = CLINIC_CONFIG.servicesHeading;
+  }
+
+  if (servicesGrid && Array.isArray(CLINIC_CONFIG.services)) {
+    servicesGrid.replaceChildren();
+
+    CLINIC_CONFIG.services.forEach((service, index) => {
+      const article = document.createElement("article");
+      article.className = index === 0
+        ? "service-card service-wide"
+        : "service-card";
+
+      const heading = document.createElement("h3");
+      heading.textContent = service.title;
+
+      const description = document.createElement("p");
+      description.textContent = service.description;
+
+      article.appendChild(heading);
+      article.appendChild(description);
+      servicesGrid.appendChild(article);
+    });
+  }
+
+  const taglineElement = document.getElementById("clinic-tagline");
+
+if (taglineElement) {
+  taglineElement.textContent = CLINIC_CONFIG.tagline;
+}
+const heroHeadingElement = document.getElementById("hero-heading");
+
+if (heroHeadingElement) {
+  heroHeadingElement.textContent = CLINIC_CONFIG.heroHeading;
+}
+const heroDescriptionElement = document.getElementById("hero-description");
+
+if (heroDescriptionElement) {
+  heroDescriptionElement.textContent = CLINIC_CONFIG.heroDescription;
+}
+// Hero buttons
+const heroBookingButton = document.getElementById("hero-booking-button");
+const heroServicesButton = document.getElementById("hero-services-button");
+
+if (heroBookingButton) {
+  heroBookingButton.textContent = CLINIC_CONFIG.heroBookingButton;
+}
+
+if (heroServicesButton) {
+  heroServicesButton.textContent = CLINIC_CONFIG.heroServicesButton;
+}
+  document.title = `${CLINIC_CONFIG.clinicName} | Dental Care`;
+
+  // Footer branding
+  const footerLogo = document.getElementById("footer-logo");
+  const footerDescription = document.getElementById("footer-description");
+  const footerBookingButton = document.getElementById("footer-booking-button");
+
+  if (footerLogo) {
+    footerLogo.src = CLINIC_CONFIG.footerLogo;
+  }
+
+  if (footerDescription) {
+    footerDescription.textContent = CLINIC_CONFIG.footerDescription;
+  }
+
+  if (footerBookingButton) {
+    footerBookingButton.firstChild.textContent =
+      CLINIC_CONFIG.footerBookingButton + " ";
+  }
+
+}
